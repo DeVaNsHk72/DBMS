@@ -21,3 +21,39 @@ ALTER TABLE Students
 ADD CONSTRAINT branch_fk
 FOREIGN KEY (branch)
 REFERENCES Department(d_name);
+
+-- selecting only unique entries from the table
+SELECT DISTINCT author_id as id FROM Views where author_id = viewer_id 
+ORDER BY id ASC;
+
+-- If a row in the parent table is deleted, all matching rows in the child table are also deleted.
+FOREIGN KEY (d_id)
+REFERENCES Department(d_id)
+ON DELETE CASCADE;
+
+-- If a row in the parent table is deleted, all matching rows in the child table are set to NULL.
+FOREIGN KEY (d_id)
+REFERENCES Department(d_id)
+ON DELETE SET NULL;
+
+-- If a row in the parent table is deleted, all matching rows in the child table are set to the default value.
+-- default value must exist in the child table
+FOREIGN KEY (d_id)
+REFERENCES Department(d_id)
+ON DELETE SET DEFAULT;
+
+-- If a row in the parent table is updated, all matching rows in the child table are also updated.
+FOREIGN KEY (d_id)
+REFERENCES Department(d_id)
+ON UPDATE CASCADE;
+
+-- If a row in the parent table is updated, all matching rows in the child table are set to NULL.
+FOREIGN KEY (d_id)
+REFERENCES Department(d_id)
+ON UPDATE SET NULL;
+
+-- If a row in the parent table is updated, all matching rows in the child table are set to the default value.
+-- default value must exist in the child table
+FOREIGN KEY (d_id)
+REFERENCES Department(d_id)
+ON UPDATE SET DEFAULT;
